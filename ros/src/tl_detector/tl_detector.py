@@ -87,6 +87,15 @@ class TLDetector(object):
         self.has_image = True
         self.camera_image = msg
         #rospy.loginfo("Inside image_cb")
+
+        #code to generate images from simulator
+        cv_image = self.bridge.imgmsg_to_cv2(self.camera_image, "bgr8")
+        filename = "sample_{}.png".format(self.i)
+        cv2.imwrite(filename, cv_image)
+        self.i+=1
+        rospy.logwarn("Saving Image")
+
+        #########################################################
         light_wp, state = self.process_traffic_lights()
 
         '''

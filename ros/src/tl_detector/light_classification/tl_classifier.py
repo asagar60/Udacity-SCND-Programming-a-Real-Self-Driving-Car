@@ -141,13 +141,13 @@ class TLClassifier(object):
             caption = 'UNKNOWN '
         elif self.classes[0][0] == 3:
             light = TrafficLight.GREEN
-            caption = 'Red: ' + str(self.scores[0][0] * 100)[:5] + '%'
+            caption = 'Green: ' + str(self.scores[0][0] * 100)[:5] + '%'
         elif self.classes[0][0] == 1:
             light = TrafficLight.RED
-            caption = 'Yellow: ' + str(self.scores[0][0] * 100)[:5] + '%'
+            caption = 'Red: ' + str(self.scores[0][0] * 100)[:5] + '%'
         elif self.classes[0][0] == 2:
             light = TrafficLight.YELLOW
-            caption = 'Green ' + str(self.scores[0][0] * 100)[:5] + '%'
+            caption = 'Yellow: ' + str(self.scores[0][0] * 100)[:5] + '%'
         else:
             light = TrafficLight.UNKNOWN
             caption = 'UNKNOWN '

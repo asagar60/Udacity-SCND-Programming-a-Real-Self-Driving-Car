@@ -170,20 +170,16 @@ class TLDetector(object):
         self.state_count += 1
     
 
-    def get_closest_waypoint(self, pose_x, pose_y):
+    def get_closest_waypoint(self, x, y):
         """Identifies the closest path waypoint to the given position
             https://en.wikipedia.org/wiki/Closest_pair_of_points_problem
         Args:
             pose (Pose): position to match a waypoint to
-
         Returns:
             int: index of the closest waypoint in self.waypoints
-
         """
         #TODO implement
-        closest_idx = self.waypoint_tree.query([pose_x, pose_y], 1)[1]
-        
-        return closest_idx
+        return self.waypoint_tree.query([x, y], 1)[1]
     
 
     def get_light_state(self, light):
@@ -200,13 +196,13 @@ class TLDetector(object):
             self.prev_light_loc = None
             return False
 
-        cv_image = self.bridge.imgmsg_to_cv2(self.camera_image, "rgb8")
-        #cv_image = self.bridge.imgmsg_to_cv2(self.camera_image, "bgr8")
+        cv_image = self.bridge.imgmsg_to_cv2(self.camera_image, "bgr8")
+        #cv_image = self.bridge.imgmsg_to_cv2(self.camera_image, "rgb8")
 
         #Get classification
-        #print('running the Clf')
         return self.light_classifier.get_classification(cv_image)
-
+        
+        
     
     def process_traffic_lights(self):
         """Finds closest visible traffic light, if one exists, and determines its
@@ -218,60 +214,36 @@ class TLDetector(object):
 
         """
          
-        closest_light = None
-        line_wp_idx = None
-        light_in_range = False
-                
-        # for debuging only
-        # state = self.get_light_state(None)
-        # return line_wp_idx, state
+        if not (self.pose and self.waypoints and self.waypoint_tree):
+            return -1, TrafficLight.UNKNOWN
 
-        #light = None
 
         # List of positions that correspond to the line to stop in front of for a given intersection
         stop_line_positions = self.config['stop_line_positions']
-        
         if(self.pose):
-            car_wp_idx = self.get_closest_waypoint(self.pose.pose.position.x, self.pose.pose.position.y)
-            
-            #TODO find the closest visible traffic light (if one exists)
-            diff = len(self.waypoints.waypoints)
-            for i, light in enumerate(self.lights):
-                # Get stop line waypoint index
-                line = stop_line_positions[i]
-                temp_wp_idx = self.get_closest_waypoint(line[0], line[1])
-                # Find closest stop line waypoint index
-                d = temp_wp_idx - car_wp_idx
-                # Allow a stop up to a short distance into the intersection to accommodate late light
-                #  state classifications or stale yellow to red light changes in the simulator.
-                if d >= self.tl_post_stop_line_view_thresh and d < diff:
-                    diff = d
-                    closest_light = light
-                    line_wp_idx = temp_wp_idx
-        
-            # Classify once every 10 images when far away from a traffic light, and increase this rate
-            #  when near.
-            if diff > DIFF_THRESHOLD:
-                self.image_count_thres = 10
-            else:
-                light_in_range = True
-                if diff < 20:
-                    # Option to increase image classification frequency when the vehicle is close to the
-                    #  traffic light. This parameter may be best utilized on accurate, fast classifiers,
-                    #  if the system can handle the extra compute overhead.
-                    self.image_count_thres = 4
-                else:
-                    self.image_count_thres = 4
-                               
-            
-            print('closest light:', diff, self.image_count_thres, 'working state:', self.working_state)
-        
-        if closest_light and light_in_range:
-            state = self.get_light_state(closest_light)
-            return line_wp_idx, state, diff
-        
-        return -1, TrafficLight.UNKNOWN, 1000
+            car_position = self.get_closest_waypoint(self.pose.pose.position.x, self.pose.pose.position.y)
 
+
+        next_stop_line = None
+        next_light = None
+        #TODO find the closest visible traffic light (if one exists)
+        distance = self.waypoints_length   #set next stop line distance to max initially 
+        for i, light in enumerate(self.lights):
+            stop_line = stop_line_positions[i]
+            stop_line_index = self.get_closest_waypoint(stop_line[0], stop_line[1])
+            index_diff = stop_line_index - car_position
+
+            if 0 <= index_diff < distance:
+                distance = index_diff
+                next_stop_line = stop_line_index
+                next_light = light
+
+
+        if next_light:
+            state = self.get_light_state(next_light)
+            return next_stop_line, state
+        else:
+            return -1, TrafficLight.UNKNOWN
 
 if __name__ == '__main__':
     try:

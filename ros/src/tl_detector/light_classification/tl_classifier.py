@@ -42,12 +42,12 @@ class TLClassifier(object):
         # Grab path to current working directory
         CWD_PATH = os.getcwd()
         self.is_real = self.config['is_site']
-        
+
         if self.is_real:
             MODEL_NAME = 'frozen-rcnn_inception-site'
         else:
             MODEL_NAME = 'frozen-rcnn_inception-simulation'
-        
+
         # path to model and label
         PATH_TO_CKPT = os.path.join(CWD_PATH, 'light_classification', MODEL_NAME,'frozen_inference_graph.pb')
         PATH_TO_LABELS = os.path.join(CWD_PATH,'light_classification', MODEL_NAME,'label_map.pbtxt')
@@ -67,9 +67,9 @@ class TLClassifier(object):
                 tf.import_graph_def(od_graph_def, name='')
 
             self.sess = tf.Session(graph=self.detection_graph)
-        
+
         sample = cv2.imread(CWD_PATH + '/sample_load.jpg')
-        
+
         image_tensor = self.detection_graph.get_tensor_by_name('image_tensor:0')
         detection_boxes = self.detection_graph.get_tensor_by_name('detection_boxes:0')
         detection_scores = self.detection_graph.get_tensor_by_name('detection_scores:0')
@@ -77,14 +77,14 @@ class TLClassifier(object):
         num_detections = self.detection_graph.get_tensor_by_name('num_detections:0')
 
         image_expanded = np.expand_dims(sample, axis=0)
-        
+
         (self.boxes, self.scores, self.classes, self.num_detections) = self.sess.run([detection_boxes, detection_scores, detection_classes, num_detections],\
             feed_dict={image_tensor: image_expanded})
 
         rospy.loginfo("  ")
         rospy.loginfo("  ")
         rospy.loginfo("Classifier loaded successfully!")
-    
+
 
     def get_classification(self, image):
         """Determines the color of the traffic light in the image
@@ -108,7 +108,7 @@ class TLClassifier(object):
         #cv2.imshow('Color input image', image)
         #cv2.imshow('Histogram equalized', image_rgb)
         #cv2.waitKey(0)
-           
+
         image_rgb = image
         self.image_pub.publish(self.bridge.cv2_to_imgmsg(image_rgb, "rgb8"))
         '''
@@ -116,7 +116,7 @@ class TLClassifier(object):
         #TODO implement light color prediction
 
         start_time = time.time()
-       
+
         # Define input and output tensors (i.e. data) for the object detection classifier
         # Input tensor is the image
         image_tensor = self.detection_graph.get_tensor_by_name('image_tensor:0')
@@ -129,11 +129,11 @@ class TLClassifier(object):
 
         # Expand image
         image_expanded = np.expand_dims(image, axis=0)
-        
+
         # Perform the actual detection by running the model with the image as input
         (self.boxes, self.scores, self.classes, self.num_detections) = self.sess.run([detection_boxes, detection_scores, detection_classes, num_detections],\
             feed_dict={image_tensor: image_expanded})
-        
+
         end_time = time.time()
 
         if self.scores[0][0] < self.MIN_SCORE_THRESHOLD:
@@ -152,4 +152,4 @@ class TLClassifier(object):
             light = TrafficLight.UNKNOWN
             caption = 'UNKNOWN '
 
-        return light
+        return light, caption

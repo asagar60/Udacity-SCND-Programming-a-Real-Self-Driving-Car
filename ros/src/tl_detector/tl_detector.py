@@ -98,6 +98,13 @@ class TLDetector(object):
         self.last_wp = -1
         self.state_count = 0
 
+        # Dictionary to convert light.state to String
+        self.traffic_det = {4: 'UNKNOWN',
+                2: 'GREEN',
+                1: 'YELLOW',
+                0 :'RED' }
+
+
         self.flag = False
         rospy.spin()
 
@@ -201,7 +208,11 @@ class TLDetector(object):
         #cv_image = self.bridge.imgmsg_to_cv2(self.camera_image, "rgb8")
 
         #Get classification
-        return self.light_classifier.get_classification(cv_image)
+        time_start = rospy.Time.now()
+        result, caption =  self.light_classifier.get_classification(cv_image)
+        time_end = rospy.Time.now()
+        #debug code
+        rospy.loginfo("Traffic Ground Truth :{} Predicted State :{} Time Taken :{}".format(self.traffic_det[light.state], caption, (time_end - time_start).to_sec()))
 
 
 

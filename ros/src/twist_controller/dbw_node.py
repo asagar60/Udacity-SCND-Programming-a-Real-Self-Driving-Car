@@ -46,14 +46,14 @@ class DBWNode(object):
         steer_ratio = rospy.get_param('~steer_ratio', 14.8)
         max_lat_accel = rospy.get_param('~max_lat_accel', 3.)
         max_steer_angle = rospy.get_param('~max_steer_angle', 8.)
-        max_throttle_percent = rospy.get_param('~max_throttle_percent')
+        #max_throttle_percent = rospy.get_param('~max_throttle_percent')
 
         # Create controller
         self.controller = Controller(vehicle_mass, decel_limit, accel_limit,
                                      wheel_radius, wheel_base,
                                      steer_ratio, max_lat_accel,
                                      max_steer_angle, brake_deadband,
-                                     fuel_capacity, max_throttle_percent)
+                                     fuel_capacity)
         self.velocity = None
         self.twist = None
         self.dbw_enabled = False

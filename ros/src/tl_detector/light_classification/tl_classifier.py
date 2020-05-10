@@ -15,11 +15,6 @@ import time
 import yaml
 import label_map_util
 
-'''
-from std_msgs.msg import String
-from sensor_msgs.msg import Image
-from cv_bridge import CvBridge, CvBridgeError
-'''
 
 class TLClassifier(object):
     def __init__(self):
@@ -93,25 +88,6 @@ class TLClassifier(object):
         Returns:
             int: ID of traffic light color (specified in styx_msgs/TrafficLight)
         """
-
-        # convert to rgb image
-        #image = cv2.cvtColor(image,cv2.COLOR_BGR2RGB)
-        #image_rgb = image
-
-        '''
-	      # image normalization
-        img_yuv = cv2.cvtColor(image, cv2.COLOR_BGR2YUV)
-        # equalize the histogram of the Y channel
-        img_yuv[:,:,0] = cv2.equalizeHist(img_yuv[:,:,0])
-        # convert the YUV image back to RGB format
-        image_rgb = cv2.cvtColor(img_yuv, cv2.COLOR_YUV2BGR)
-        #cv2.imshow('Color input image', image)
-        #cv2.imshow('Histogram equalized', image_rgb)
-        #cv2.waitKey(0)
-
-        image_rgb = image
-        self.image_pub.publish(self.bridge.cv2_to_imgmsg(image_rgb, "rgb8"))
-        '''
 
         #TODO implement light color prediction
 

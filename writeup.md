@@ -5,7 +5,7 @@
 
 # System Integration & Implementation
 ## Overview
----
+
 The car would be operated on a test track and required to follow waypoints in a large circle. If the light is green, then the car is required to continue driving around the circle. If the light is red, then the car is required to stop and wait for the light to turn green. This is a part of the Perception process, one among the three major steps in the system integration project.
 
 For traffic light detection and classification we decided to use an SSD (Single Shot MultiBox Detector) network as the purpose of an SSD is detect the location and classify the detected object in one pass through the network.
@@ -127,7 +127,7 @@ Steps:
 Do a 90-10 split: Add the images and their matching XML annotation files to train (90%) and test (10%) folders.
 
 ### Step 4: Generating TFRecords for the train-test split: 
-We need some helper code from Dat Tran's [raccoon_datasetr](https://github.com/datitran/raccoon_dataset) repository from GitHub. We just need 2 scripts from this repo: 'xml_to_csv.py' and 'generate_tfrecord.py'.
+We need some helper code from Dat Tran's [raccoon_dataset](https://github.com/datitran/raccoon_dataset) repository from GitHub. We just need 2 scripts from this repo: 'xml_to_csv.py' and 'generate_tfrecord.py'.
 **xml_to_csv.py**: 
 - Make the necessary modifications in the main function of this file. This will iterate through the train and test to create those separate CSVs and then from these CSVs we create the TFRecord.
 - For more info, please go through Dat Tran's medium post: https://towardsdatascience.com/how-to-train-your-own-object-detector-with-tensorflows-object-detector-api-bec72ecfe1d9
@@ -163,7 +163,7 @@ Here's a high level overview of the model. It all starts with an image, from whi
 - a label assigned to each bounding box
 - a probability for each label and bounding box
 
-![faster rcnn_architecture](imgs/faster rcnn_architecture.png)
+![faster rcnn_architecture](imgs/faster rcnn_architecture.png)  
 
 This [blog](https://tryolabs.com/blog/2018/01/18/faster-r-cnn-down-the-rabbit-hole-of-modern-object-detection/) has a pretty good explanation of how Object Detection works on Faster RCNN.
 This [medium post](https://medium.com/@smallfishbigsea/faster-r-cnn-explained-864d4fb7e3f8) is quite helpful to get a quick overview of the Faster RCNN networks.

@@ -35,10 +35,12 @@ The eventual purpose of this node is to publish a fixed number of waypoints ahea
 - Update of velocity. If there is a red ligth ahead, it updates waypoint velocities so that the car stops ~stop_distance (node parameter, default: 5.0 m) meters behind the red light waypoint. Waypoint velocities before the stop point are updated considering a smooth deceleration.
 - Traversed waypoints are dequeued and new points are enqueued, preserving and reusing those in the middle. When a light-state changes, the entire queue is updated as already discribed.
 
-A little bit of math involved in making sure the closest waypoint is actually in front of the car:
+A little bit of math involved in making sure the closest waypoint is actually in front of the car:  
+
 ![closest waypoint_code](imgs/closest waypoint_code.JPG)  
 
-We make use of 'dot product' to know the direction of the vectors, which would help us determine the position of the waypoint. The waypoint is in front of the car if the dot product is 'positive' and behind the car if the dot product is 'negative'.
+We make use of 'dot product' to know the direction of the vectors, which would help us determine the position of the waypoint. The waypoint is in front of the car if the dot product is 'positive' and behind the car if the dot product is 'negative'.  
+
 ![closest waypoint_hyperplane](imgs/closest waypoint_hyperplane.JPG)  
 
 
@@ -155,7 +157,8 @@ Steps:
 - You could load up Tensorboard, if you want to visualize the values incuding loss, accuracy, steps and training time 
 - Now, you have the trained model ready. Next, laod the model via checkpoint
 
-**Faster RCNN Model Architecture**:
+**Faster RCNN Model Architecture**:  
+
 Faster R-CNN was originally published in [NIPS 2015](https://arxiv.org/abs/1506.01497). The architecture of Faster R-CNN is complex because it has several moving parts.
 
 Here's a high level overview of the model. It all starts with an image, from which we want to obtain:
@@ -163,7 +166,9 @@ Here's a high level overview of the model. It all starts with an image, from whi
 - a label assigned to each bounding box
 - a probability for each label and bounding box
 
+
 ![faster rcnn_architecture](imgs/faster rcnn_architecture.png)  
+
 
 This [blog](https://tryolabs.com/blog/2018/01/18/faster-r-cnn-down-the-rabbit-hole-of-modern-object-detection/) has a pretty good explanation of how Object Detection works on Faster RCNN.
 This [medium post](https://medium.com/@smallfishbigsea/faster-r-cnn-explained-864d4fb7e3f8) is quite helpful to get a quick overview of the Faster RCNN networks.

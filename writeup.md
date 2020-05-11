@@ -5,14 +5,14 @@
 
 # System Integration & Implementation
 ## Overview
-
+---
 The car would be operated on a test track and required to follow waypoints in a large circle. If the light is green, then the car is required to continue driving around the circle. If the light is red, then the car is required to stop and wait for the light to turn green. This is a part of the Perception process, one among the three major steps in the system integration project.
 
-For traffic light detection and classification we decided to use an SSD (Single Shot MultiBox Detector) network as the purpose of an SSD is detect the location and classify the detected object in one pass through the network.
+For traffic light detection and classification we decided to use an SSD (Single Shot MultiBox Detector) network as the purpose of an SSD is to detect the location and classify the detected object in one pass through the network.
 
 Due to the limited amount of data available to train the network the decision was made to take a pre-trained network and transfer learn the network on the available simulated and real datasets provided by Udacity. The chosen network was pre-trained with the COCO dataset.
 
-Transfer learning was achieved using the Object Detection API provided by Tensorflow. For simulated data the network was trained on the provided data by Udacity, however real data provided by Udacity was supplemented with a dataset of labelled traffic lights provided by Bosch. This dataset can be found [here](https://github.com/bosch-ros-pkg/bstld).
+Transfer learning was achieved using the Object Detection API provided by Tensorflow. For simulated data the network was trained on the provided data by Udacity, however real-world data provided by Udacity was supplemented with a dataset of labelled traffic light images provided by Bosch. This dataset can be found [here](https://github.com/bosch-ros-pkg/bstld).
 
 ## Directory & File Structure
 
@@ -30,17 +30,15 @@ The project has the following five major files:
 
 ![waypoint-updater-ros-graph](imgs/waypoint-updater-ros-graph.png)  
 
-The eventual purpose of this node is to publish a fixed number of waypoints ahead of the vehicle with the correct target velocities, depending on traffic lights and obstacles. As the vehicle moves along a path, the waypoint updater is responsible for making changes to the planned path. Waypoint updater publishes the next 50 waypoints ahead of the car position, with the velocity that the car needs to have at that point. Every 1/20 seconds, it does:
+The purpose of this node is to publish a fixed number of waypoints ahead of the vehicle with the correct target velocities, depending on traffic lights and obstacles. As the vehicle moves along a path, the waypoint updater is responsible for making changes to the planned path. Waypoint updater publishes the next 50 waypoints ahead of the car's position, with the velocity that the car needs to have at that point. Every 1/20 seconds, it does:
 - Update of closest waypoint. It does a local search from current waypoint until it finds a local minimum in the distance.
 - Update of velocity. If there is a red ligth ahead, it updates waypoint velocities so that the car stops ~stop_distance (node parameter, default: 5.0 m) meters behind the red light waypoint. Waypoint velocities before the stop point are updated considering a smooth deceleration.
 - Traversed waypoints are dequeued and new points are enqueued, preserving and reusing those in the middle. When a light-state changes, the entire queue is updated as already discribed.
 
-A little bit of math involved in making sure the closest waypoint is actually in front of the car:  
-
+A little bit of math involved in making sure the closest waypoint is actually in front of the car:
 ![closest waypoint_code](imgs/closest waypoint_code.JPG)  
 
-We make use of 'dot product' to know the direction of the vectors, which would help us determine the position of the waypoint. The waypoint is in front of the car if the dot product is 'positive' and behind the car if the dot product is 'negative'.  
-
+We make use of 'dot product' to know the direction of the vectors, which would help us determine the position of the waypoint. The waypoint is in front of the car if the dot product is 'positive' and behind the car if the dot product is 'negative'.
 ![closest waypoint_hyperplane](imgs/closest waypoint_hyperplane.JPG)  
 
 
@@ -97,7 +95,7 @@ Getting started with the installation. Find the instructions on [Tensorflow Obje
 - The actual detection process takes place in the 'for' loop (in the last cell), which we need to modify based on our needs accordingly
 - Loading in your custom images: In the jupyter notebook, make the necessary imports to load your images from a directory, modify the notebook to meet your needs and run it
 
-## Building a custom (traffic light) object detection model using Tensorflow Object Detection API:
+## How to build a custom (traffic light) object detection model using Tensorflow Object Detection API:
 
 Add your objects of interest to the pre-trained model or use that models weights to give us a head start on training these new objects. The Tensorflow Object Detection API is basically a tradeoff between accuracy and speed.  
 
@@ -129,7 +127,7 @@ Steps:
 Do a 90-10 split: Add the images and their matching XML annotation files to train (90%) and test (10%) folders.
 
 ### Step 4: Generating TFRecords for the train-test split: 
-We need some helper code from Dat Tran's [raccoon_dataset](https://github.com/datitran/raccoon_dataset) repository from GitHub. We just need 2 scripts from this repo: 'xml_to_csv.py' and 'generate_tfrecord.py'.
+We need some helper code from Dat Tran's [raccoon_datasetr](https://github.com/datitran/raccoon_dataset) repository from GitHub. We just need 2 scripts from this repo: 'xml_to_csv.py' and 'generate_tfrecord.py'.
 **xml_to_csv.py**: 
 - Make the necessary modifications in the main function of this file. This will iterate through the train and test to create those separate CSVs and then from these CSVs we create the TFRecord.
 - For more info, please go through Dat Tran's medium post: https://towardsdatascience.com/how-to-train-your-own-object-detector-with-tensorflows-object-detector-api-bec72ecfe1d9
@@ -157,8 +155,7 @@ Steps:
 - You could load up Tensorboard, if you want to visualize the values incuding loss, accuracy, steps and training time 
 - Now, you have the trained model ready. Next, laod the model via checkpoint
 
-**Faster RCNN Model Architecture**:  
-
+**Faster RCNN Model Architecture**:
 Faster R-CNN was originally published in [NIPS 2015](https://arxiv.org/abs/1506.01497). The architecture of Faster R-CNN is complex because it has several moving parts.
 
 Here's a high level overview of the model. It all starts with an image, from which we want to obtain:
@@ -166,9 +163,7 @@ Here's a high level overview of the model. It all starts with an image, from whi
 - a label assigned to each bounding box
 - a probability for each label and bounding box
 
-
-![faster rcnn_architecture](imgs/faster rcnn_architecture.png)  
-
+![faster rcnn_architecture](imgs/faster rcnn_architecture.png)
 
 This [blog](https://tryolabs.com/blog/2018/01/18/faster-r-cnn-down-the-rabbit-hole-of-modern-object-detection/) has a pretty good explanation of how Object Detection works on Faster RCNN.
 This [medium post](https://medium.com/@smallfishbigsea/faster-r-cnn-explained-864d4fb7e3f8) is quite helpful to get a quick overview of the Faster RCNN networks.

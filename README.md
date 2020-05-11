@@ -4,11 +4,11 @@
 
 Overview
 ---
-In this project we will implement a Real Self Driving Car in python to maneuver the vehicle around the track while following the traffic rules.
+In this project, we will implement a Real Self Driving Car in python to maneuver the vehicle around the track while following the traffic rules.
 
 Goal
 ---
-The car follows a smooth trajectory and performs its manoeuvres smoothly within the advised thresholds of acceleration and jerk.
+The car follows a smooth trajectory and performs its maneuvers smoothly within the advised thresholds of acceleration and jerk.
 It detects traffic lights with a x% of accuracy and responds to the traffic lights accordingly.
 
 

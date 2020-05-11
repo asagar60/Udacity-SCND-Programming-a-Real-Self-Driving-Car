@@ -16,6 +16,10 @@ It detects traffic lights with a higher accuracy and responds to the traffic lig
 
 ![Output_gif](./imgs/output.gif)
 
+## Implementation Strategy
+
+For Implementation
+
 ## The Team
 
 |         Name      |      Role     |    Location   | LinkedIn    |     email   |
@@ -112,6 +116,8 @@ source devel/setup.sh
 roslaunch launch/styx.launch
 ```
 4. Run the simulator
+
+The frozen_inference_graph each for the site and simulator can be found []()
 
 ## Installation Instructions
 ### Please use **one** of the two installation options

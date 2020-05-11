@@ -95,7 +95,7 @@ Getting started with the installation. Find the instructions on [Tensorflow Obje
 - The actual detection process takes place in the 'for' loop (in the last cell), which we need to modify based on our needs accordingly
 - Loading in your custom images: In the jupyter notebook, make the necessary imports to load your images from a directory, modify the notebook to meet your needs and run it
 
-## How to build a custom (traffic light) object detection model using Tensorflow Object Detection API:
+## Building a custom (traffic light) object detection model using Tensorflow Object Detection API:
 
 Add your objects of interest to the pre-trained model or use that models weights to give us a head start on training these new objects. The Tensorflow Object Detection API is basically a tradeoff between accuracy and speed.  
 

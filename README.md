@@ -1,4 +1,4 @@
-## Final Project - System Integration
+# Final Project - System Integration
 [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
 
@@ -18,7 +18,7 @@ It detects traffic lights with a higher accuracy and responds to the traffic lig
 
 ## Implementation Strategy
 
-For Implementation
+For implementation, working of the nodes, traffic light detector, classifier, model architecture, TensorFlow Object Detection API and more, please refer to the [writeup.md]().
 
 ## The Team
 

@@ -21,7 +21,7 @@ It detects traffic lights with a higher accuracy and responds to the traffic lig
 |         Name      |      Role     |    Location   | LinkedIn    |     email   |
 |---------------|----------------|---------------|-------------|-------------|
 | Sandeep Ashwatnarayana| __Lead__ | KA, India |  | <saswathnaray@smu.edu> |
-| Malith Ranaweera | Member | Australia | [RKMalith]()| <rkmalith@gmail.com> |
+| Malith Ranaweera | Member | Australia | [Malith Ranaweera](https://au.linkedin.com/in/prasanga-ranaweera)| <rkmalith@gmail.com> |
 | Arun Sagar | Member | DEL, India  | [Arun](www.linkedin.com/in/arun-sagar) |<asgar60@gmail.com> |
 | Shuang Li| Member | China |  [ShuangLi]( ) | <shuangli2048@gmail.com> |
 

@@ -4,7 +4,7 @@
 
 Overview
 ---
-In this project, we will implement a Real Self Driving Car in python to maneuver the vehicle around the track while following the traffic rules.
+In this project, we implement a Real Self Driving Car in python to maneuver the vehicle around the track while following the traffic rules.
 
 Goal
 ---
@@ -20,12 +20,12 @@ It detects traffic lights with a higher accuracy and responds to the traffic lig
 
 **2. Output video for the test lot:**  
 
-![Test_gif](./imgs/Test_lot.gif)
+![]()
 
 
 ## Implementation Strategy
 
-For implementation, working of the nodes, traffic light detector, classifier, model architecture, TensorFlow Object Detection API and more, please refer to the [writeup.md]().
+For the implementation, functionality of the nodes, traffic light detector, classifier, model architecture, TensorFlow Object Detection API and more, please refer to the [writeup.md]().
 
 ## The Team
 
@@ -45,22 +45,20 @@ For implementation, working of the nodes, traffic light detector, classifier, mo
 #### Brief Description on Autonomous Vehicle Architecture
 
 **Sensor Subsystem**
-It is a Hardware component that gathers data about the environment . These hardware includes IMU, LIDAR, RADAR, Camera, GPS etc.
+It is a hardware component that gathers data from the environment. These hardware includes IMU, LIDAR, RADAR, Camera, GPS etc.
 
 **Vehicle Subsystem**
-It is a Software component that processes data from sensors into structured information. Most of the analysis of the environment takes place here. Ex - Traffic Light Detection , Obstacle Detection, Localization etc.
+It is a software component that processes data from sensors into structured information. Most of the analysis of the environment takes place here. Ex - Traffic Light Detection , Obstacle Detection, Localization etc.
 
 **Planning Subsystem**
-Once the information is processed by the perception system, Vehicle can use that information to plan its path
+Once the information is processed by the perception system, Vehicle can use that information to plan its trjectory path.
 
 **Control Subsystem**
-Software Component to ensure that vehicle follows the path specified by planning subsystem
-
-
+A software component to ensure that vehicle follows the path specified by planning subsystem
 
 ## CARLAs System Architecture
 
-The following is a system architecture diagram showing the ROS nodes and topics used in the project. You can refer to the diagram throughout the project as needed
+The following is a system architecture diagram showing the ROS nodes and the topics used in the project. You can refer to the diagram throughout the project as needed.
 
 ![image alt text](imgs/system_architecture.png)
 
@@ -69,19 +67,19 @@ The following is a system architecture diagram showing the ROS nodes and topics 
 #### Brief Description on CARLAs Sytem Architecture
 
 #### Perception Subsystem
-This subsystem gathers data about the environment, processes it and sends information to further subsytems. It determines the state of closest traffic light , closest waypoint from the traffic light and its stop line , then it publishes the information to <ins>/obstacle_waypoints</ins> and <ins>/traffic_waypoints</ins> topic.
+This subsystem gathers data from the environment, processes them and sends information to further subsytems. It determines the state (i.e. red, green or yellow) of the closest traffic light, the closest waypoint from the traffic light and its stop line. Afterwards, it publishes the information to <ins>/obstacle_waypoints</ins> and <ins>/traffic_waypoints</ins> topic.
 
 **Traffic light Detection Node**
 
-This Node takes in camera images and predicts the state of traffic light . We use a deep neural net with pretrained FCNN to detect if the upcoming traffic light is red or not.
+This node takes in camera images and predicts the state of traffic light. We use a deep neural net with a pretrained FCNN to predic if upcoming traffic lights are red, green or yellow.
 
 #### Planning Subsystem
 
-This subsystem plans the vehicle's trajectory using current pose of vehicle, vehicle velocity. These trajectory keeps on updating based on state of traffic lights.
+This subsystem plans the vehicle's trajectory using current position of the vehicle, the vehicle's velocity and other kinematic details. The trajectory keeps getting updated based on state of traffic lights.
 
 For this project, the waypoints are marked as green dots to visually observe the vehicle's trajectory.
 
-The output of this module is to pass the list of waypoints to control subsystem.
+The output of this module is to pass the list of waypoints to the control subsystem.
 
 **Waypoint Loader Node**
 
@@ -89,19 +87,19 @@ Waypoint Loader Node loads a CSV file that contains all the waypoints along the 
 
 **Waypoint Updater Node**
 
-Waypoint Updater Node subscribes to three topics list of waypoints, the vehicle’s current position, and the state of upcoming traffic lights. Based on that the node publishes a list of waypoints to follow - each waypoint contains a position on the map and a target velocity
+Waypoint Updater Node subscribes to three topics; list of waypoints, the vehicle’s current position, and the state of the upcoming traffic light. Based on that the node publishes a list of waypoints to follow - each waypoint contains a position on the map and a target velocity.
 
 #### Control Subsystem
 
-This subsystem takes target trajectory information as input and sends control commands to navigate the vehicle
+This subsystem takes target trajectory information as input and sends control commands to navigate the vehicle.
 
 **Waypoint Follower Node**
 
-This node  parses the list of waypoints to follow and publishes proposed linear and angular velocities to the /twist_cmd topic
+This node  parses the list of waypoints to follow and publishes the proposed linear and angular velocities to the /twist_cmd topic
 
 **Drive By Wire (DBW) Node**
 
-This node takes target linear and angular velocity and adjust the vehicle’s controls accordingly. Specifically, we control 3 things: throttle, steering, brakes.
+This node takes target linear and angular velocity and adjusts the vehicle’s controls variables accordingly (i.e. throttle, steering, brakes).
 
 ## Testing Instructions
 
@@ -160,8 +158,7 @@ docker run -p 4567:4567 -v $PWD:/capstone -v /tmp/log:/root/.ros/ --rm -it capst
 ```
 
 ### Port Forwarding
-
-To setup port forwading in Virtual Box, refer to [Port Forwarding Setup](https://s3-us-west-1.amazonaws.com/udacity-selfdrivingcar/files/Port+Forwarding.pdf) PDF
+To set up port forwarding, please refer to the "uWebSocketIO Starter Guide" found in the classroom (see Extended Kalman Filter Project lesson).
 
 ### Real world testing
 1. Download [training bag](https://s3-us-west-1.amazonaws.com/udacity-selfdrivingcar/traffic_light_bag_file.zip) that was recorded on the Udacity self-driving car.

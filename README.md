@@ -124,7 +124,7 @@ roslaunch launch/styx.launch
 ```
 4. Run the simulator
 
-The frozen_inference_graph each for the site and simulator can be found []()
+**NOTE: The frozen_inference_graph each for the [simulator](https://drive.google.com/open?id=1GW2ZQNHPCNRToK_V9yD1a8EO-i7b-0Pe) and the [site](https://drive.google.com/open?id=1Ea6AOfLX2Jk23WmcQ1wg4laQSN1NIGov) are available on the Google drive for reference.  
 
 ## Installation Instructions
 ### Please use **one** of the two installation options

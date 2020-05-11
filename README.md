@@ -8,7 +8,9 @@ In this project we will implement a Real Self Driving Car in python to maneuver 
 
 Goal
 ---
-The car will try to be in a lane cente. The car will stop at traffic light when its red. The car wil not exced acceleration limit and jerk limit to have a smooth trajectory.
+The car follows a smooth trajectory and performs its manoeuvres smoothly within the advised thresholds of acceleration and jerk.
+It detects traffic lights with a x% of accuracy and responds to the traffic lights accordingly.
+
 
 ## Output
 
@@ -19,7 +21,7 @@ The car will try to be in a lane cente. The car will stop at traffic light when 
 |         Name      |      Role     |    Location   | LinkedIn    |     email   |
 |---------------|----------------|---------------|-------------|-------------|
 | Sandeep Ashwatnarayana| __Lead__ | KA, India |  | <saswathnaray@smu.edu> |
-| RKMalith | Member | Australia | [RKMalith]()| <rkmalith@gmail.com> |
+| Malith Ranaweera | Member | Australia | [RKMalith]()| <rkmalith@gmail.com> |
 | Arun Sagar | Member | DEL, India  | [Arun](www.linkedin.com/in/arun-sagar) |<asgar60@gmail.com> |
 | Shuang Li| Member | China |  [ShuangLi]( ) | <shuangli2048@gmail.com> |
 

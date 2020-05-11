@@ -20,7 +20,7 @@ It detects traffic lights with a higher accuracy and responds to the traffic lig
 
 **2. Output video for the test lot:**  
 
-![]()
+![Test_gif](./imgs/Test_lot.gif)
 
 
 ## Implementation Strategy
@@ -160,7 +160,8 @@ docker run -p 4567:4567 -v $PWD:/capstone -v /tmp/log:/root/.ros/ --rm -it capst
 ```
 
 ### Port Forwarding
-To set up port forwarding, please refer to the "uWebSocketIO Starter Guide" found in the classroom (see Extended Kalman Filter Project lesson).
+
+To setup port forwading in Virtual Box, refer to [Port Forwarding Setup](https://s3-us-west-1.amazonaws.com/udacity-selfdrivingcar/files/Port+Forwarding.pdf) PDF
 
 ### Real world testing
 1. Download [training bag](https://s3-us-west-1.amazonaws.com/udacity-selfdrivingcar/traffic_light_bag_file.zip) that was recorded on the Udacity self-driving car.

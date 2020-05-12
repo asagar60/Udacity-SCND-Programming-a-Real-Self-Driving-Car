@@ -16,11 +16,14 @@ It detects traffic lights with a higher accuracy and responds to the traffic lig
 
 **1. Output video for the simulator test track:**  
 
-![Output_gif](./imgs/output.gif)
+![Output_gif](./imgs/output_video.gif)
 
 **2. Output video for the test lot:**  
 
 ![Test_gif](./imgs/Test_lot.gif)
+
+
+For complete output video : [google drive link](https://drive.google.com/open?id=1ifFeU0oQhCEMKcLRbA5EbZGz5JuvKoqD)
 
 
 ## Implementation Strategy

@@ -60,7 +60,7 @@ _NOTE_:
 
 ### waypoint_updater.py (revisited)
 
-![decelerate_waypoints_code](imgs/decelerate_waypoints_code.png)  
+![decelerate_waypoints_code](imgs/Capture.png)  
 
 Once traffic light detection is working properly, we have incorporated the traffic light data into our waypoint updater node. To accomplish this part of the project successfully, we have adjusted the target velocities for the waypoints leading up to red traffic lights or other obstacles in order to bring the vehicle to a smooth and full stop. We successfully accomplished to have a smooth decrease in velocity leading up to the stopping point.
 

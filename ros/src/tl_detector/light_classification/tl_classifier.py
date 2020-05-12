@@ -31,8 +31,8 @@ class TLClassifier(object):
         self.label_map = None
         self.category_index = None
 
-        self.MIN_SCORE_THRESHOLD = 0.40
-        self.NUM_CLASSES = 3
+        self.MIN_SCORE_THRESHOLD = .4 #0.40
+        self.NUM_CLASSES = 4 #3
 
         # Grab path to current working directory
         CWD_PATH = os.getcwd()
@@ -117,15 +117,15 @@ class TLClassifier(object):
             caption = 'UNKNOWN '
         elif self.classes[0][0] == 3:
             light = TrafficLight.GREEN
-            caption = 'Green: ' + str(self.scores[0][0] * 100)[:5] + '%'
+            #caption = 'Green: ' + str(self.scores[0][0] * 100)[:5] + '%'
         elif self.classes[0][0] == 1:
             light = TrafficLight.RED
-            caption = 'Red: ' + str(self.scores[0][0] * 100)[:5] + '%'
+            #caption = 'Red: ' + str(self.scores[0][0] * 100)[:5] + '%'
         elif self.classes[0][0] == 2:
             light = TrafficLight.YELLOW
-            caption = 'Yellow: ' + str(self.scores[0][0] * 100)[:5] + '%'
+            #caption = 'Yellow: ' + str(self.scores[0][0] * 100)[:5] + '%'
         else:
             light = TrafficLight.UNKNOWN
-            caption = 'UNKNOWN '
+            #caption = 'UNKNOWN '
 
-        return light, caption
+        return light

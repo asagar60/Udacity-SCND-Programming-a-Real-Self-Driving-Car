@@ -23,12 +23,12 @@ It detects traffic lights with a higher accuracy and responds to the traffic lig
 ![Test_gif](./imgs/Test_lot.gif)
 
 
-For complete output video : [google drive link](https://drive.google.com/open?id=1ifFeU0oQhCEMKcLRbA5EbZGz5JuvKoqD)
+**For complete output video** : [google drive link](https://drive.google.com/open?id=1ifFeU0oQhCEMKcLRbA5EbZGz5JuvKoqD)
 
 
 ## Implementation Strategy
 
-For the implementation, functionality of the nodes, traffic light detector, classifier, model architecture, TensorFlow Object Detection API and more, please refer to the [writeup.md]().
+For the implementation, functionality of the nodes, traffic light detector, classifier, model architecture, TensorFlow Object Detection API and more, please refer to the [writeup.md](./writeup.md).
 
 ## The Team
 

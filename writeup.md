@@ -143,7 +143,7 @@ We need some helper code from Dat Tran's [raccoon_dataset](https://github.com/da
 - Make the necessary modifications based on your requirements (add three 'row_label' values each for RED, GREEN and YELLOW in the if-elif-else statement)
 - Make sure you have installed Object Detection (installation.md on github). Run the two commands each for train and test present in the 'Usage' section of generate_tfrecord.py. Now we have the train and test record files ready.
 
-The reason we need the TFRecord files is to convert from anything that will generate data (say, Pascal VOOC format) to TFRecord so we could use them with the Object Detection API.
+The reason we need the TFRecord files is to convert from anything that will generate data (say, Pascal VOC format) to TFRecord so we could use them with the Object Detection API.
 
 ### Step 5: Setup a configuration file
 To train our model, we need to setup a config file (along with TFRecord, pre-trained model). Please find all the relevant files, installation information, pre-trained models and more on [Tensorflow Object Detection API](https://github.com/tensorflow/models/tree/master/research/object_detection).

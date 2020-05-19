@@ -24,7 +24,7 @@ The project has the following five major files:
 * dbw_node.py
 * tl_detector.py
 * tl_classifier.py
-* All the helper files and utils can be found under the 'src' directory
+* All the helper files and utils can be found under the 'src' directory upon which this project is built  
 
 ## Implementation & Working of the nodes
 

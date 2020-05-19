@@ -36,7 +36,7 @@ For the implementation, functionality of the nodes, traffic light detector, clas
 |---------------|----------------|---------------|-------------|-------------|
 | Sandeep Aswathnarayana | __Team Lead__ | Bengaluru, IND | [Sandeep Aswathnarayana](https://www.linkedin.com/in/sandeep-a/)| <saswathnaray@smu.edu> |
 | Malith Ranaweera|Member| Sydney, AUS | [Malith Ranaweera](https://au.linkedin.com/in/prasanga-ranaweera) | <malith.ranaweera@unsw.edu.au> |
-| Arun Sagar | Member | Delhi, IND  | [Arun Sagar](www.linkedin.com/in/arun-sagar) |<asagar60@gmail.com> |
+| Arun Sagar | Member | Delhi, IND  | [Arun Sagar](https://www.linkedin.com/in/arun-sagar-a6b055aa/?originalSubdomain=in) |<asagar60@gmail.com> |
 | Shuang Li| Member | Chongqing, CHN |  [Shuang Li]( ) | <dz123456@vip.qq.com> |
 
 

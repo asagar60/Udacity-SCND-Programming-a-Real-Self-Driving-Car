@@ -28,7 +28,9 @@ It detects traffic lights with a higher accuracy and responds to the traffic lig
 
 ## Implementation Strategy
 
-For the implementation, functionality of the nodes, traffic light detector, classifier, model architecture, TensorFlow Object Detection API and more, please refer to the [writeup.md](./writeup.md).
+For the implementation, functionality of the nodes, traffic light detector, classifier, model architecture, TensorFlow Object Detection API and more, please refer to the [writeup.md](./writeup.md).  
+
+A comprehensive explanation and instructions on how to modify the code to build and deploy your own custom object detection model is available on my **[Medium article](https://towardsdatascience.com/how-to-build-a-custom-object-detector-classifier-using-tensorflow-object-detection-api-811b7bcd31c4)**.  
 
 ## The Team
 
